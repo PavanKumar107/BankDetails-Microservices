@@ -8,6 +8,7 @@ import com.blz.bankdetails.DTO.BankDetailsDTO;
 import com.blz.bankdetails.exception.CustomNotFoundException;
 import com.blz.bankdetails.model.BankDetailsModel;
 import com.blz.bankdetails.repository.BankDetailsRepository;
+import com.blz.bankdetails.util.TokenUtil;
 
 @Service
 public class BankDetailsService implements IBankDetailsService {
@@ -15,9 +16,9 @@ public class BankDetailsService implements IBankDetailsService {
 	@Autowired 
 	BankDetailsRepository bankDetailsRepository;
 
-	//	@Autowired
-	//	TokenUtil tokenUtil;
-	//
+		@Autowired
+		TokenUtil tokenUtil;
+	
 	//	@Autowired
 	//	AdminRepository adminRepository;
 
@@ -33,7 +34,7 @@ public class BankDetailsService implements IBankDetailsService {
 		//		Optional<AdminModel> isTokenPresent = adminRepository.findById(admId);
 		//		if(isTokenPresent.isPresent()) {
 		//			Optional<AdminModel> isAdminPresent = adminRepository.findById(adminId);
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8077/bankdetails/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-Admin:8067/admin/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			BankDetailsModel model = new BankDetailsModel();
 			//			if(isAdminPresent.isPresent()) {
@@ -54,7 +55,7 @@ public class BankDetailsService implements IBankDetailsService {
 		//		Optional<AdminModel> isTokenPresent = adminRepository.findById(admId);
 		//		if(isTokenPresent.isPresent()) {
 		//			Optional<AdminModel>isIdPresent = adminRepository.findById(adminId);
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8077/bankdetails/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-Admin:8067/admin/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			Optional<BankDetailsModel>isDetailsPresent = bankDetailsRepository.findById(id);
 			//			if(isIdPresent.isPresent()) {
@@ -86,7 +87,7 @@ public class BankDetailsService implements IBankDetailsService {
 		//		Long admId = tokenUtil.decodeToken(token);
 		//		Optional<AdminModel> isTokenPresent = adminRepository.findById(admId);
 		//		if(isTokenPresent.isPresent()) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8077/bankdetails/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-Admin:8067/admin/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			List<BankDetailsModel>getAllBankDetails = bankDetailsRepository.findAll();
 			if(getAllBankDetails.size()>0) {
@@ -103,7 +104,7 @@ public class BankDetailsService implements IBankDetailsService {
 		//		Long admId = tokenUtil.decodeToken(token);
 		//		Optional<AdminModel> isTokenPresent = adminRepository.findById(admId);
 		//		if(isTokenPresent.isPresent()) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8077/bankdetails/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-Admin:8067/admin/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			Optional<BankDetailsModel> isDetailsPresent = bankDetailsRepository.findById(id);
 			if(isDetailsPresent.isPresent()) {

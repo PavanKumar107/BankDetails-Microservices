@@ -10,7 +10,6 @@ public class BankDetailsDTO {
 	@Pattern(regexp = "^[A-Z]{1,}[a-z]{1,}$", message = "Bank name should start with uppercase and having atleast 2 characters!")
 	private String bankName;
 
-	@NotBlank(message = "Account no cannot be empty")
 	private Long Accountno;
 
 	@NotBlank(message = "Ifsc code cannot be empty")
